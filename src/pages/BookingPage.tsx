@@ -1,0 +1,310 @@
+import { useParams, useNavigate } from 'react-router-dom';
+import { tours } from '../data/tours';
+import { useState, useEffect } from 'react';
+
+export default function BookingPage() {
+  const { tourId } = useParams();
+  const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    date: '',
+    guests: 1,
+    specialRequests: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const tour = tours.find(t => t.id === tourId);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (!tour) {
+    return (
+      <div className="error-page">
+        <h1>Tour Not Found</h1>
+        <button onClick={() => navigate('/')}>Back to Home</button>
+      </div>
+    );
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Calculate total price
+    const totalPrice = tour.price * formData.guests;
+
+    // Create WhatsApp message
+    const message = `
+🎫 *NEW BOOKING REQUEST*
+
+*Tour:* ${tour.title}
+*Date:* ${formData.date}
+*Guests:* ${formData.guests}
+*Total Price:* ₱${totalPrice.toLocaleString()}
+
+*Customer Details:*
+Name: ${formData.fullName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+
+*Special Requests:*
+${formData.specialRequests || 'None'}
+    `.trim();
+
+    const whatsappUrl = `https://wa.me/639613464499?text=${encodeURIComponent(message)}`;
+    
+    // Simulate processing
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+      setIsSubmitting(false);
+      alert('Booking request sent! We will contact you shortly via WhatsApp.');
+      navigate('/');
+    }, 1000);
+  };
+
+  const totalPrice = tour.price * formData.guests;
+
+  return (
+    <>
+      {/* Navigation Header */}
+      <nav className={`main-header ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="header-logo-container">
+          <a href="/" className="header-logo">
+            <img src="/rectangle_logo.png" alt="Soycar Logo" className="custom-logo" />
+          </a>
+        </div>
+        
+        <ul className="header-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#services">Tours & Services</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      {/* Booking Page Content */}
+      <section className="booking-page">
+        <div className="app-container">
+          <button className="back-btn" onClick={() => navigate(-1)}>
+            ← Back to Tour
+          </button>
+
+          <div className="booking-page-header">
+            <h1>Complete Your Booking</h1>
+            <p>You're one step away from an amazing experience!</p>
+          </div>
+
+          <div className="booking-page-grid">
+            
+            {/* Left Column - Booking Form */}
+            <div className="booking-form-container">
+              <form onSubmit={handleSubmit} className="booking-form">
+                
+                <div className="form-section">
+                  <h2>Personal Information</h2>
+                  
+                  <div className="form-group">
+                    <label htmlFor="fullName">Full Name *</label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Juan Dela Cruz"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="email">Email Address *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="juan@example.com"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone Number *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="+63 912 345 6789"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-section">
+                  <h2>Booking Details</h2>
+                  
+                  <div className="form-group">
+                    <label htmlFor="date">Preferred Date *</label>
+                    <input
+                      type="date"
+                      id="date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleInputChange}
+                      required
+                      min={new Date().toISOString().split('T')[0]}
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="guests">Number of Guests *</label>
+                    <select
+                      id="guests"
+                      name="guests"
+                      value={formData.guests}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+                        <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="specialRequests">Special Requests (Optional)</label>
+                    <textarea
+                      id="specialRequests"
+                      name="specialRequests"
+                      value={formData.specialRequests}
+                      onChange={handleInputChange}
+                      rows={4}
+                      placeholder="Any dietary restrictions, accessibility needs, or special occasions?"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-section">
+                  <div className="terms-checkbox">
+                    <input type="checkbox" id="terms" required />
+                    <label htmlFor="terms">
+                      I agree to the <a href="#terms">Terms & Conditions</a> and <a href="#privacy">Privacy Policy</a>
+                    </label>
+                  </div>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="submit-booking-btn"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Processing...' : 'Confirm Booking via WhatsApp'}
+                </button>
+
+                <p className="form-note">
+                  * After clicking, you'll be redirected to WhatsApp to complete your booking with our team.
+                </p>
+              </form>
+            </div>
+
+            {/* Right Column - Booking Summary */}
+            <div className="booking-summary-container">
+              <div className="booking-summary-sticky">
+                <div className="booking-summary">
+                  <h3>Booking Summary</h3>
+                  
+                  <div className="summary-tour-info">
+                    <img src={tour.image} alt={tour.title} className="summary-tour-image" />
+                    <div>
+                      <h4>{tour.title}</h4>
+                      {tour.subtitle && <p className="summary-subtitle">{tour.subtitle}</p>}
+                      {tour.duration && <p className="summary-duration">⏱ {tour.duration}</p>}
+                    </div>
+                  </div>
+
+                  <div className="summary-divider"></div>
+
+                  <div className="summary-details">
+                    <div className="summary-row">
+                      <span>Date:</span>
+                      <span>{formData.date || 'Not selected'}</span>
+                    </div>
+                    <div className="summary-row">
+                      <span>Guests:</span>
+                      <span>{formData.guests}</span>
+                    </div>
+                    <div className="summary-row">
+                      <span>Price per person:</span>
+                      <span>₱{tour.price.toLocaleString()}</span>
+                    </div>
+                  </div>
+
+                  <div className="summary-divider"></div>
+
+                  <div className="summary-total">
+                    <span>Total Amount:</span>
+                    <span className="total-price">₱{totalPrice.toLocaleString()}</span>
+                  </div>
+
+                  <div className="summary-note">
+                    <p>💡 <strong>Note:</strong> Final price will be confirmed by our team via WhatsApp.</p>
+                  </div>
+                </div>
+
+                <div className="payment-methods">
+                  <h4>We Accept:</h4>
+                  <div className="payment-icons">
+                    <span>💳 Cash</span>
+                    <span>📱 GCash</span>
+                    <span>🏦 Bank Transfer</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <div id="contact" className="app-container">
+        <footer>
+          <div className="footer-content">
+            <div className="footer-col">
+              <h3>Soycar Transport</h3>
+              <p>Your premium gateway to the ultimate Palawan experience.</p>
+            </div>
+            <div className="footer-col">
+              <h3>Contact Us</h3>
+              <p>El Nido, Palawan, Philippines</p>
+              <p><a href="mailto:soycartransportcarrrentals@gmail.com">soycartransportcarrrentals@gmail.com</a></p>
+              <p>+63 927 224 4732</p>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>&copy; {new Date().getFullYear()} Soycar Transport and Services. All rights reserved.</p>
+            <p>Powered by Raxx</p>
+          </div>
+        </footer>
+      </div>
+    </>
+  );
+}
