@@ -9,6 +9,8 @@ export interface Tour {
   description: string;
   includes?: string[];
   itinerary?: { time: string; activity: string }[];
+  isRedirect?: boolean; 
+  redirectTo?: string; 
   carDetails?: {
     model: string;
     year: string;
@@ -17,6 +19,7 @@ export interface Tour {
     seats: number;
   };
 }
+
 
 export const tours: Tour[] = [
   // MOST POPULAR
@@ -38,9 +41,9 @@ export const tours: Tour[] = [
   },
   {
     id: 'whole-day-inland-tour',
-    category: 'most-popular',
+    category: 'most-popular', 
     title: 'WHOLE DAY INLAND TOUR',
-    duration: '8-10 HOURS',
+    duration: '6-8 HOURS',
     price: 7999,
     image: '/privatetours.jpg',
     description: 'Explore El Nido\'s hidden gems on land. Visit waterfalls, lagoons, beaches, and viewpoints with our expert guides.',
@@ -69,6 +72,8 @@ export const tours: Tour[] = [
     duration: '24 HOURS',
     price: 1499,
     image: '/carrental.jpg',
+    isRedirect: true, 
+  redirectTo: '/?category=rent-a-car', 
     description: 'Self-drive car rental. Explore at your own pace with our well-maintained fleet.',
     includes: [
       'Full tank of gas',
@@ -85,6 +90,8 @@ export const tours: Tour[] = [
     duration: 'HALF DAY',
     price: 6500,
     image: '/fishing.jpg',
+    isRedirect: true, 
+  redirectTo: '/?category=adventure',
     description: 'Experience world-class fishing in the pristine waters of Bacuit Bay. All equipment provided.',
     includes: [
       'Fishing boat with captain',
@@ -97,6 +104,32 @@ export const tours: Tour[] = [
   },
 
   // INLAND TOUR
+  {
+  id: 'whole-day-inland-tour-inland',
+  category: 'inland-tour',
+  title: 'WHOLE DAY INLAND TOUR',
+  duration: '6-8 HOURS',
+  price: 7999,
+  image: '/privatetours.jpg',
+  description: 'Explore El Nido\'s hidden gems on land. Visit waterfalls, lagoons, beaches, and viewpoints with our expert guides.',
+  includes: [
+    'Private van with driver',
+    'Professional tour guide',
+    'Entrance fees',
+    'Lunch included',
+    'Bottled water',
+    'Insurance'
+  ],
+  itinerary: [
+    { time: '8:00 AM', activity: 'Hotel pickup' },
+    { time: '9:00 AM', activity: 'Nagkalit-kalit Waterfalls' },
+    { time: '11:00 AM', activity: 'Nacpan Beach' },
+    { time: '1:00 PM', activity: 'Lunch at local restaurant' },
+    { time: '2:30 PM', activity: 'Las Cabanas Beach' },
+    { time: '4:00 PM', activity: 'Sunset viewpoint' },
+    { time: '5:30 PM', activity: 'Return to hotel' }
+  ]
+},
   {
     id: 'half-day-inland-tour',
     category: 'inland-tour',
@@ -128,6 +161,7 @@ export const tours: Tour[] = [
       'All entrance fees'
     ]
   },
+
 
   // RENT A CAR
   {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom'; 
 import { tours } from '../data/tours';
 import TourCard from '../components/TourCard';
 import FilterTabs from '../components/FilterTabs';
@@ -9,7 +10,8 @@ import MobileMenu from '../components/MobileMenu';
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeCategory, setActiveCategory] = useState('most-popular');
+  const [searchParams, setSearchParams] = useSearchParams(); 
+  const activeCategory = searchParams.get('category') || 'most-popular';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +22,10 @@ export default function HomePage() {
   }, []);
 
   const filteredTours = tours.filter(tour => tour.category === activeCategory);
+  const handleCategoryChange = (category: string) => {
+  setSearchParams({ category }); // Updates URL to ?category=inland-tour
+};
+
 
   return (
     <>
@@ -32,10 +38,11 @@ export default function HomePage() {
   </div>
   
   <ul className="header-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="#services">Tours & Services</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="#services">Tours & Services</a></li>
+  <li><a href="/travel-guide">Travel Guide</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
 </nav>
 
 {/* Mobile Navigation */}
@@ -63,7 +70,7 @@ export default function HomePage() {
               <button className="primary-pill-btn" onClick={() => {
                 document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
               }}>Book Now</button>
-              <a href="#services" className="secondary-underline-link">Learn More</a>
+              <a href="/travel-guide" className="secondary-underline-link">Learn More</a>
             </div>
           </div>
         </div>
@@ -73,9 +80,10 @@ export default function HomePage() {
       <section id="services" className="tour-filter-section">
         <div className="app-container">
           <FilterTabs 
-            activeCategory={activeCategory}
-            onCategoryChange={setActiveCategory}
-          />
+  activeCategory={activeCategory} 
+  onCategoryChange={handleCategoryChange} 
+/>
+
         </div>
       </section>
 
@@ -83,17 +91,13 @@ export default function HomePage() {
       <section className="tour-cards-section">
         <div className="app-container-wide">
           <div className="horizontal-tour-grid">
-            {filteredTours.map((tour) => (
-              <TourCard
-                key={tour.id}
-                id={tour.id}
-                title={tour.title}
-                subtitle={tour.subtitle}
-                duration={tour.duration}
-                price={tour.price}
-                image={tour.image}
-              />
-            ))}
+            {filteredTours.map(tour => (
+  <TourCard 
+    key={tour.id} 
+    tour={tour}
+  />
+))}
+
           </div>
 
           {/* Special CTA for Rent a Car */}

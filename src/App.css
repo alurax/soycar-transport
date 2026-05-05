@@ -29,13 +29,13 @@ h1, h2, h3 {
   padding: 20px 60px;
   z-index: 1000;
   transition: all 0.3s ease;
-  background: transparent; /* Changed from rgba */
-  backdrop-filter: none; /* No blur by default */
+  background: transparent;
+  backdrop-filter: none;
 }
 
 .main-header.scrolled {
-  background: rgba(26, 66, 90, 0.95);
-  backdrop-filter: blur(10px); /* Blur only when scrolled */
+  background: rgba(26, 65, 90, 0);
+  backdrop-filter: blur(10px);
   padding: 15px 60px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
@@ -45,15 +45,6 @@ h1, h2, h3 {
   .main-header {
     display: none !important;
   }
-}
-
-
-.main-header.scrolled {
-  background: rgba(74, 114, 160, 0.067); 
-  backdrop-filter: blur(12px); 
-  -webkit-backdrop-filter: blur(12px);
-  padding: 15px 60px; 
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .header-logo-container {
@@ -66,6 +57,9 @@ h1, h2, h3 {
   width: auto;
   display: block;
   transition: transform 0.3s ease;
+  background: transparent !important;
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
 }
 
 .custom-logo:hover {
@@ -83,24 +77,17 @@ h1, h2, h3 {
   padding: 0;
 }
 
-/* Header links - better visibility on transparent background */
 .header-links a {
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Add shadow for readability */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .header-links a:hover {
   color: #a3e635;
-}
-
-/* Logo shadow for better visibility */
-.custom-logo,
-.mobile-logo-img {
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
 }
 
 /* 2. Hero Section */
@@ -133,11 +120,11 @@ h1, h2, h3 {
 
 .massive-bg-text {
   position: absolute;
-  top: 45%;
+  top: 28%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Oswald', sans-serif;
-  color: rgba(255, 255, 255, 0.85); 
+  color: rgba(255, 255, 255, 0.4); /* INCREASED from 0.25 to 0.4 */
   font-weight: 700;
   white-space: nowrap;
   z-index: 3;
@@ -146,18 +133,20 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  line-height: 0.85; 
+  line-height: 0.85;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3); /* Added shadow for depth */
 }
 
 .bg-text-top {
-  font-size: 5vw; 
-  letter-spacing: 15px; 
-  opacity: 0.9;
-  margin-left: 15px; 
+  font-size: 4vw;
+  letter-spacing: 12px;
+  opacity: 1; /* INCREASED from 0.9 to 1 */
+  margin-left: 12px;
 }
 
 .bg-text-bottom {
-  font-size: 14vw;
+  font-size: 12vw;
+  opacity: 1;
 }
 
 .overview-content {
@@ -169,14 +158,15 @@ h1, h2, h3 {
 .hero-text-bottom {
   max-width: 600px;
   text-align: left;
+  padding-left: 40px;
 }
 
 .hero-text-bottom h1 {
-  margin: 0 0 15px 0;
-  font-size: clamp(2rem, 3vw, 3rem); 
-  line-height: 1.2;
+  margin: 0 0 25px 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.3;
   color: #fff;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.7);
 }
 
 .hero-text-bottom p {
@@ -185,6 +175,8 @@ h1, h2, h3 {
   font-weight: 400;
   line-height: 1.6;
   margin-bottom: 30px;
+  margin-top: 10px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
 }
 
 .hero-action-row {
@@ -204,6 +196,7 @@ h1, h2, h3 {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .primary-pill-btn:hover { 
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
@@ -256,7 +249,7 @@ h1, h2, h3 {
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 35px; /* Increased from 20px for better breathing room */
+  gap: 35px;
   position: relative;
   z-index: 10;
 }
@@ -267,7 +260,7 @@ h1, h2, h3 {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   padding: 0; 
-  overflow: hidden; /* Critical for zoom effect */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   transform-style: preserve-3d;
@@ -276,26 +269,24 @@ h1, h2, h3 {
 }
 
 .service-card:hover {
-  transform: translateY(-12px); /* Increased lift */
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* 🔥 ENHANCED: Larger Image with Zoom Effect */
 .card-image {
   width: 100%;
-  height: 300px; /* Increased from 220px - Yohak-inspired */
+  height: 300px;
   background-size: cover;
   background-position: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.6s ease; /* Smooth zoom */
+  transition: transform 0.6s ease;
   position: relative;
 }
 
 .service-card:hover .card-image {
-  transform: scale(1.05); /* Subtle zoom on hover */
+  transform: scale(1.05);
 }
 
-/* 🔥 NEW: Hover Overlay Effect */
 .card-image::after {
   content: '';
   position: absolute;
@@ -309,16 +300,15 @@ h1, h2, h3 {
   opacity: 1;
 }
 
-/* The Text inside the card */
 .card-content {
-  padding: 35px; /* Increased from 30px */
+  padding: 35px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
 .card-content h2 { 
-  font-size: 1.6rem; /* Increased from 1.5rem */
+  font-size: 1.6rem;
   margin-top: 0; 
   color: #fff;
   letter-spacing: 0.5px;
@@ -326,12 +316,12 @@ h1, h2, h3 {
 }
 
 .service-card:hover .card-content h2 {
-  color: #aed5e6; /* Subtle color shift on hover */
+  color: #aed5e6;
 }
 
 .card-content p { 
-  font-size: 1rem; /* Slightly increased */
-  line-height: 1.7; /* Better readability */
+  font-size: 1rem;
+  line-height: 1.7;
   color: #d0d0d0; 
   margin-bottom: 25px; 
 }
@@ -344,7 +334,7 @@ h1, h2, h3 {
   background: #fff;
   color: #1a425a;
   border: none;
-  padding: 14px 24px; /* Increased padding */
+  padding: 14px 24px;
   border-radius: 8px;
   font-weight: 700;
   font-size: 1rem;
@@ -358,164 +348,6 @@ h1, h2, h3 {
   background: #aed5e6; 
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(174, 213, 230, 0.4);
-}
-
-/* ========================================
-   🔥 ENHANCED PRODUCT CARDS (YOHAK-INSPIRED)
-   ======================================== */
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Slightly wider */
-  gap: 30px; /* Increased from 20px */
-  margin-bottom: 20px;
-  align-items: start;
-}
-
-.product-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* Critical for zoom effect */
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-8px); /* Increased lift */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Deeper shadow */
-}
-
-/* 🔥 ENHANCED: Larger Product Images with Zoom */
-.product-image {
-  width: calc(100% + 40px);
-  height: 280px; /* Increased from 200px - Yohak-inspired */
-  margin: -20px -20px 15px -20px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  border-radius: 12px 12px 0 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.6s ease; /* Smooth zoom */
-}
-
-.product-card:hover .product-image {
-  transform: scale(1.05); /* Subtle zoom on hover */
-}
-
-/* 🔥 ENHANCED: Bigger, Bolder Typography */
-.product-title {
-  font-size: 1.25rem; /* Increased from 1.05rem */
-  color: #fff;
-  margin: 0 0 10px 0;
-  line-height: 1.4;
-  font-weight: 700; /* Bolder */
-  letter-spacing: 0.3px;
-  transition: color 0.3s ease;
-}
-
-.product-card:hover .product-title {
-  color: #aed5e6; /* Subtle highlight on hover */
-}
-
-/* 🔥 ENHANCED: More Prominent Pricing */
-.product-price {
-  color: #a3e635; 
-  font-weight: 800; /* Bolder */
-  font-size: 1.4rem; /* Increased from 1.15rem */
-  margin-bottom: 15px;
-  letter-spacing: 0.5px;
-}
-
-/* The bottom divider line and button row */
-.product-actions {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding-top: 15px;
-  margin-top: auto;
-}
-
-.product-action-btn {
-  background: transparent;
-  border: none;
-  color: #d0d0d0;
-  font-size: 0.9rem; /* Slightly larger */
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 0;
-  transition: color 0.2s, transform 0.2s;
-}
-
-.product-action-btn:hover {
-  color: #fff;
-  transform: translateX(2px); /* Subtle slide effect */
-}
-
-/* ========================================
-   DETAIL SECTIONS (OPTIONAL ENHANCEMENT)
-   ======================================== */
-
-.detail-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 80px;
-  align-items: center;
-}
-
-.detail-row.reverse {
-  direction: rtl; /* Flips the layout */
-}
-
-.detail-row.reverse > * {
-  direction: ltr; /* Resets text direction */
-}
-
-.detail-visual {
-  width: 100%;
-  min-height: 400px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-}
-
-.detail-content {
-  padding: 40px;
-}
-
-.detail-content h2 {
-  font-size: 2.2rem;
-  color: #fff;
-  margin: 0 0 20px 0;
-}
-
-.detail-desc {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #d0d0d0;
-  margin-bottom: 40px;
-}
-
-/* Mobile Responsiveness for Details Sections */
-@media (max-width: 900px) {
-  .detail-row, .detail-row.reverse {
-    grid-template-columns: 1fr;
-    direction: ltr;
-  }
-  .detail-visual {
-    min-height: 250px;
-  }
-  .detail-content {
-    padding: 40px 20px;
-  }
 }
 
 /* --- FOOTER --- */
@@ -565,57 +397,6 @@ footer {
   color: #888; 
 }
 
-/* --- FLOATING WHATSAPP BUTTON --- */
-.whatsapp-float {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  background-color: #25D366;
-  color: #fff;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-  z-index: 10000;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  text-decoration: none;
-}
-
-.whatsapp-icon {
-  width: 35px;
-  height: 35px;
-  fill: currentColor;
-}
-
-.whatsapp-float:hover {
-  transform: translateY(-5px) scale(1.05);
-  background-color: #1ebd5a;
-}
-
-.whatsapp-float::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 50%;
-  background-color: rgba(37, 211, 102, 0.6);
-  z-index: -1;
-  animation: whatsappPulse 2s infinite;
-}
-
-@keyframes whatsappPulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(1.6);
-    opacity: 0;
-  }
-}
-
 /* --- SERVICES SECTION BACKGROUND --- */
 #services {
   background-color: #30f4c300;
@@ -623,234 +404,6 @@ footer {
   border-radius: 210px;
 }
 
-/* ========================================
-   🔥 MOBILE RESPONSIVENESS
-   ======================================== */
-
-@media (max-width: 900px) {
-  .whatsapp-float {
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-  }
-  .whatsapp-icon {
-    width: 28px;
-    height: 28px;
-  }
-  
-  /* Adjust image heights for mobile */
-  .card-image {
-    height: 250px;
-  }
-  
-  .product-image {
-    height: 220px;
-  }
-  
-  /* Better mobile typography */
-  .section-header h2 {
-    font-size: 2rem;
-  }
-  
-  .product-title {
-    font-size: 1.1rem;
-  }
-  
-  .product-price {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .overview-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  
-  .product-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-/* ========================================
-   🔥 TOUR FILTER TABS
-   ======================================== */
-
-.tour-filter-section {
-  padding: 40px 0 20px 0;
-  background: transparent;
-}
-
-.filter-tabs {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.filter-tab {
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  padding: 12px 24px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  border-radius: 4px;
-}
-
-.filter-tab:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.filter-tab.active {
-  background: #fbbf24; /* Yellow like screenshot */
-  border-color: #fbbf24;
-  color: #1a425a;
-}
-
-/* ========================================
-   🔥 HORIZONTAL TOUR CARDS
-   ======================================== */
-
-.tour-cards-section {
-  padding: 40px 0 80px 0;
-  background: transparent;
-}
-
-.app-container-wide {
-  width: 95%;
-  max-width: 1600px;
-  margin: 0 auto;
-}
-
-.horizontal-tour-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.horizontal-tour-card {
-  position: relative;
-  height: 320px;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.horizontal-tour-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.tour-card-image {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.tour-card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
-  transition: background 0.3s ease;
-}
-
-.horizontal-tour-card:hover .tour-card-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-}
-
-.tour-card-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 30px 25px;
-  z-index: 2;
-}
-
-.tour-card-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 15px 0;
-  line-height: 1.3;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.tour-card-duration {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 8px 0;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-
-.tour-card-price {
-  font-size: 1rem;
-  color: #fff;
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-/* ========================================
-   🔥 RESPONSIVE
-   ======================================== */
-
-@media (max-width: 1200px) {
-  .horizontal-tour-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-  
-  .horizontal-tour-card {
-    height: 280px;
-  }
-}
-
-@media (max-width: 768px) {
-  .filter-tabs {
-    gap: 8px;
-  }
-  
-  .filter-tab {
-    padding: 10px 16px;
-    font-size: 0.75rem;
-  }
-  
-  .horizontal-tour-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  
-  .horizontal-tour-card {
-    height: 250px;
-  }
-  
-  .tour-card-title {
-    font-size: 1.1rem;
-  }
-}
 /* ========================================
    🔥 TOUR FILTER TABS
    ======================================== */
@@ -999,48 +552,6 @@ footer {
   margin: 0;
   font-weight: 700;
   letter-spacing: 0.5px;
-}
-
-/* ========================================
-   🔥 SPECIAL CTA BOX (Rent a Car)
-   ======================================== */
-
-.special-cta-box {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 40px;
-  text-align: center;
-  margin-top: 40px;
-}
-
-.special-cta-box h3 {
-  font-size: 1.8rem;
-  color: #fff;
-  margin: 0 0 15px 0;
-}
-
-.special-cta-box p {
-  font-size: 1.1rem;
-  color: #d0d0d0;
-  margin: 0 0 25px 0;
-}
-
-.whatsapp-cta-btn {
-  display: inline-block;
-  background: #25D366;
-  color: #fff;
-  padding: 16px 40px;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.whatsapp-cta-btn:hover {
-  background: #1ebd5a;
-  transform: translateY(-3px);
 }
 
 /* ========================================
@@ -1348,7 +859,10 @@ footer {
 }
 
 .booking-btn-secondary {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
   background: transparent;
   color: #fff;
@@ -1361,6 +875,7 @@ footer {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .booking-btn-secondary:hover {
@@ -1559,7 +1074,6 @@ footer {
   color: #aed5e6;
   margin: 0;
 }
-
 /* ========================================
    🔥 BOOKING SUMMARY
    ======================================== */
@@ -1694,99 +1208,7 @@ footer {
 }
 
 /* ========================================
-   🔥 ERROR PAGE
-   ======================================== */
-
-.error-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px;
-}
-
-.error-page h1 {
-  font-size: 3rem;
-  color: #fff;
-  margin: 0 0 20px 0;
-}
-
-.error-page button {
-  background: #a3e635;
-  color: #1a425a;
-  border: none;
-  padding: 14px 32px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.error-page button:hover {
-  background: #8bc924;
-  transform: translateY(-2px);
-}
-
-/* ========================================
-   🔥 RESPONSIVE
-   ======================================== */
-
-@media (max-width: 1200px) {
-  .tour-detail-grid,
-  .booking-page-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .booking-card-sticky,
-  .booking-summary-sticky {
-    position: static;
-  }
-}
-
-@media (max-width: 768px) {
-  .filter-tabs {
-    gap: 8px;
-  }
-  
-  .filter-tab {
-    padding: 10px 16px;
-    font-size: 0.75rem;
-  }
-  
-  .horizontal-tour-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  
-  .horizontal-tour-card {
-    height: 250px;
-  }
-  
-  .tour-detail-hero {
-    height: 50vh;
-  }
-  
-  .car-specs-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .trust-badges {
-    grid-template-columns: 1fr;
-  }
-  
-  .booking-form-container {
-    padding: 25px;
-  }
-  
-  .special-cta-box {
-    padding: 25px;
-  }
-}
-/* ========================================
-   💬 FLOATING CONTACT MENU
+   🔥 CONTACT FLOAT BUTTON - EXPANDS UPWARD
    ======================================== */
 
 .contact-float-container {
@@ -1794,179 +1216,111 @@ footer {
   bottom: 30px;
   right: 30px;
   z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
 }
 
-/* Main Floating Button */
-.contact-float-btn {
+.contact-float-main {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  position: relative;
-  z-index: 10;
-}
-
-.contact-float-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
-}
-
-.contact-float-btn.open {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  transform: rotate(90deg);
-}
-
-.contact-main-icon {
-  width: 28px;
-  height: 28px;
-  color: #fff;
-  transition: transform 0.3s ease;
-}
-
-/* Pulse Animation */
-.contact-float-btn::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: inherit;
   animation: pulse 2s infinite;
-  z-index: -1;
+  order: 999;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
+.contact-float-main:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
 }
 
-/* Contact Options Menu */
-.contact-options {
-  position: absolute;
-  bottom: 75px;
-  right: 0;
+.contact-float-container.open .contact-float-main {
+  transform: rotate(90deg);
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.contact-float-menu {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   pointer-events: none;
 }
 
-.contact-options.open {
+.contact-float-container.open .contact-float-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
   pointer-events: all;
 }
 
-.contact-option {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transform: translateY(20px) scale(0);
-  opacity: 0;
-  white-space: nowrap;
-}
-
-.contact-options.open .contact-option {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-}
-
-.contact-option:hover {
-  transform: translateY(0) scale(1.05);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
-}
-
-.contact-icon {
-  font-size: 1.3rem;
+.contact-float-item {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: scale(0) translateY(20px);
 }
 
-.contact-label {
-  font-family: 'Montserrat', sans-serif;
+.contact-float-container.open .contact-float-item {
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
-/* ========================================
-   💬 RESPONSIVE
-   ======================================== */
+.contact-float-container.open .contact-float-item:nth-child(5) {
+  transition-delay: 0.1s;
+}
 
-@media (max-width: 768px) {
-  .contact-float-container {
-    bottom: 20px;
-    right: 20px;
+.contact-float-container.open .contact-float-item:nth-child(4) {
+  transition-delay: 0.15s;
+}
+
+.contact-float-container.open .contact-float-item:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.contact-float-container.open .contact-float-item:nth-child(2) {
+  transition-delay: 0.25s;
+}
+
+.contact-float-container.open .contact-float-item:nth-child(1) {
+  transition-delay: 0.3s;
+}
+
+.contact-float-item:hover {
+  transform: scale(1.15) translateX(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
   }
-
-  .contact-float-btn {
-    width: 55px;
-    height: 55px;
-  }
-
-  .contact-main-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .contact-option {
-    padding: 10px 16px;
-    font-size: 0.85rem;
-  }
-
-  .contact-icon {
-    font-size: 1.1rem;
-  }
-
-  /* Stack horizontally on mobile if preferred */
-  .contact-options {
-    bottom: auto;
-    top: -60px;
-    right: 0;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    max-width: 200px;
-  }
-
-  .contact-option {
-    padding: 10px;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    justify-content: center;
-  }
-
-  .contact-label {
-    display: none;
+  50% {
+    box-shadow: 0 8px 35px rgba(102, 126, 234, 0.7);
   }
 }
 
-/* Remove old WhatsApp float styles if they exist */
-.whatsapp-float {
-  display: none !important;
-}
 /* ========================================
    📸 INSTAGRAM GALLERY SECTION
    ======================================== */
@@ -2019,7 +1373,6 @@ footer {
   height: 22px;
 }
 
-/* Instagram Grid */
 .instagram-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -2047,7 +1400,6 @@ footer {
   transform: scale(1.1);
 }
 
-/* Hover Overlay */
 .instagram-overlay {
   position: absolute;
   top: 0;
@@ -2074,92 +1426,9 @@ footer {
 }
 
 /* ========================================
-   📸 RESPONSIVE
+   🍔 MOBILE HEADER - CLEAN VERSION
    ======================================== */
 
-@media (max-width: 1400px) {
-  .instagram-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-  
-  .instagram-grid-item:nth-child(7) {
-    display: none;
-  }
-}
-
-@media (max-width: 1200px) {
-  .instagram-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  
-  .instagram-grid-item:nth-child(6),
-  .instagram-grid-item:nth-child(7) {
-    display: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .instagram-header {
-    padding: 0 20px 30px 20px;
-  }
-  
-  .instagram-title {
-    font-size: 2rem;
-  }
-  
-  .instagram-follow-btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-  
-  .instagram-icon {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .instagram-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
-  .instagram-grid-item:nth-child(5),
-  .instagram-grid-item:nth-child(6),
-  .instagram-grid-item:nth-child(7) {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .instagram-header {
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  
-  .instagram-title {
-    font-size: 1.8rem;
-  }
-  
-  .instagram-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .instagram-grid-item:nth-child(4),
-  .instagram-grid-item:nth-child(5),
-  .instagram-grid-item:nth-child(6),
-  .instagram-grid-item:nth-child(7) {
-    display: none;
-  }
-  
-  .instagram-hover-icon {
-    width: 35px;
-    height: 35px;
-  }
-}
-/* ========================================
-   🍔 MOBILE HEADER & BURGER MENU
-   ======================================== */
-
-/* Mobile Header */
 .mobile-header {
   display: none;
   position: fixed;
@@ -2167,21 +1436,24 @@ footer {
   left: 0;
   width: 100%;
   height: 70px;
-  background: transparent; /* Changed from rgba */
-  backdrop-filter: none; /* No blur by default */
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   z-index: 1000;
   padding: 0 20px;
   align-items: center;
   justify-content: space-between;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  box-shadow: none;
 }
 
+/* Blurred when scrolled */
 .mobile-header.scrolled {
-  background: rgba(26, 66, 90, 0.98);
-  backdrop-filter: blur(10px); /* Blur only when scrolled */
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(26, 66, 90, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
-
 
 .mobile-logo-container {
   position: absolute;
@@ -2192,13 +1464,13 @@ footer {
 .mobile-logo-img {
   height: 45px;
   width: auto;
+  filter: drop-shadow(0 3px 15px rgba(0, 0, 0, 0.9));
 }
 
 .mobile-header-spacer {
-  width: 50px; /* Same width as burger button for symmetry */
+  width: 50px;
 }
 
-/* Burger Button */
 .burger-btn {
   width: 50px;
   height: 50px;
@@ -2211,19 +1483,17 @@ footer {
   align-items: center;
   gap: 6px;
   padding: 10px;
-  z-index: 1001;
+  z-index: 1002;
 }
 
-/* Burger Button - better visibility on transparent background */
 .burger-line {
   width: 28px;
   height: 3px;
   background: #fff;
   border-radius: 3px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
 }
-
 
 .burger-btn.open .burger-line:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
@@ -2237,7 +1507,6 @@ footer {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* Mobile Menu Overlay */
 .mobile-menu-overlay {
   position: fixed;
   top: 0;
@@ -2257,7 +1526,6 @@ footer {
   pointer-events: all;
 }
 
-/* Mobile Menu Drawer */
 .mobile-menu-drawer {
   position: fixed;
   top: 0;
@@ -2266,10 +1534,11 @@ footer {
   max-width: 350px;
   height: 100%;
   background: linear-gradient(135deg, #1a425a 0%, #0d2838 100%);
-  z-index: 999;
+  z-index: 1001;
   transition: left 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   overflow-y: auto;
   box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+  padding-top: 100px;
 }
 
 .mobile-menu-drawer.open {
@@ -2277,19 +1546,20 @@ footer {
 }
 
 .mobile-menu-header {
-  padding: 30px 25px;
+  padding: 20px 25px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
+  margin-top: -10px;
 }
 
 .mobile-menu-logo {
-  height: 60px;
+  height: 50px;
   width: auto;
 }
 
 .mobile-menu-links {
   list-style: none;
-  padding: 20px 0;
+  padding: 30px 0;
   margin: 0;
 }
 
@@ -2298,13 +1568,11 @@ footer {
 }
 
 .mobile-menu-links a {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 18px 25px;
+  display: block;
+  padding: 20px 30px;
   color: #fff;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   transition: all 0.3s ease;
   border-left: 4px solid transparent;
@@ -2313,11 +1581,7 @@ footer {
 .mobile-menu-links a:hover {
   background: rgba(255, 255, 255, 0.1);
   border-left-color: #a3e635;
-  padding-left: 30px;
-}
-
-.menu-icon {
-  font-size: 1.5rem;
+  padding-left: 35px;
 }
 
 .mobile-menu-footer {
@@ -2340,224 +1604,644 @@ footer {
 }
 
 .mobile-menu-socials a {
-  width: 45px;
-  height: 45px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, rgba(163, 230, 53, 0.2), rgba(174, 213, 230, 0.2));
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .mobile-menu-socials a:hover {
-  background: rgba(163, 230, 53, 0.2);
-  transform: translateY(-3px);
+  background: linear-gradient(135deg, #a3e635, #aed5e6);
+  border-color: #a3e635;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(163, 230, 53, 0.4);
 }
 
 .social-icon {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  color: #fff;
 }
 
 /* ========================================
    📱 RESPONSIVE BREAKPOINTS
    ======================================== */
 
-/* Hide desktop header, show mobile on tablets and below */
 @media (max-width: 992px) {
   .main-header {
     display: none !important;
   }
   
   .mobile-header {
-    display: flex;
-  }
-  
-  /* Adjust hero for mobile header */
-  .video-overview {
-    margin-top: 70px;
-  }
-}
-
-/* ========================================
-   📱 MOBILE SPACING FIXES
-   ======================================== */
-
-@media (max-width: 992px) {
-  /* Container padding adjustments */
-  .app-container {
-    padding: 0 20px;
-  }
-  
-  .app-container-wide {
-    width: 100%;
-    padding: 0 15px;
-  }
-  
-  /* Hero section adjustments */
-  .hero-text-bottom h1 {
-    font-size: 2rem;
-  }
-  
-  .hero-text-bottom p {
-    font-size: 1rem;
-  }
-  
-  /* Section spacing */
-  .tour-filter-section {
-    padding: 30px 0 15px 0;
-  }
-  
-  .tour-cards-section {
-    padding: 30px 0 50px 0;
-  }
-  
-  /* Filter tabs */
-  .filter-tabs {
-    padding: 0 10px;
-  }
-  
-  /* Instagram gallery */
-  .instagram-gallery-section {
-    padding: 50px 0 40px 0;
-  }
-  
-  .instagram-header {
-    padding: 0 15px 25px 15px;
-  }
-  
-  /* Footer */
-  footer {
-    padding: 40px 0 20px 0;
-  }
-  
-  .footer-content {
-    flex-direction: column;
-    gap: 30px;
-    text-align: center;
+    display: flex !important;
   }
 }
 
 @media (max-width: 768px) {
-  /* Tighter spacing on phones */
-  .app-container {
-    padding: 0 15px;
+  .mobile-logo-img {
+    height: 42px;
   }
   
-  /* Hero adjustments */
-  .video-overview {
-    height: 70vh;
-    min-height: 500px;
-  }
-  
-  .hero-text-bottom h1 {
-    font-size: 1.75rem;
-  }
-  
-  .hero-text-bottom p {
-    font-size: 0.95rem;
-  }
-  
-  .hero-action-row {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-  }
-  
-  .primary-pill-btn {
-    width: 100%;
-    padding: 14px 30px;
-  }
-  
-  /* Background text sizing */
-  .massive-bg-text {
-    font-size: 15vw;
-  }
-  
-  /* Tour cards */
-  .horizontal-tour-grid {
-    gap: 15px;
-  }
-  
-  .horizontal-tour-card {
-    height: 280px;
-  }
-  
-  /* Special CTA box */
-  .special-cta-box {
-    padding: 30px 20px;
-  }
-  
-  .special-cta-box h3 {
-    font-size: 1.5rem;
-  }
-  
-  .special-cta-box p {
-    font-size: 1rem;
-  }
-  
-  /* Instagram */
-  .instagram-title {
-    font-size: 1.75rem;
-  }
-  
-  .instagram-follow-btn {
-    padding: 10px 18px;
-    font-size: 0.85rem;
+  .burger-line {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
   }
 }
 
 @media (max-width: 480px) {
-  /* Extra small phones */
   .mobile-logo-img {
     height: 40px;
-  }
-  
-  .hero-text-bottom h1 {
-    font-size: 1.5rem;
-  }
-  
-  .hero-text-bottom p {
-    font-size: 0.9rem;
-  }
-  
-  .filter-tab {
-    padding: 8px 12px;
-    font-size: 0.7rem;
-  }
-  
-  .tour-card-title {
-    font-size: 1rem;
-  }
-  
-  .tour-card-duration,
-  .tour-card-price {
-    font-size: 0.85rem;
-  }
-  
-  .instagram-header {
-    gap: 15px;
-  }
-  
-  .instagram-title {
-    font-size: 1.5rem;
-  }
-  
-  footer {
-    font-size: 0.9rem;
   }
 }
 
 /* ========================================
-   🖥️ LARGE DESKTOP
+   🖥️ WIDE SCREEN OPTIMIZATION
    ======================================== */
 
-@media (min-width: 1920px) {
+@media (min-width: 1400px) {
   .app-container {
     max-width: 1400px;
   }
   
-  .app-container-wide {
-    max-width: 1800px;
+  .horizontal-tour-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1920px) {
+  .app-container {
+    max-width: 1600px;
+  }
+  
+  .horizontal-tour-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 2560px) {
+  .app-container {
+    max-width: 2000px;
+  }
+  
+  .horizontal-tour-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* ============================================
+   TRAVEL GUIDE PAGE STYLES
+   ============================================ */
+
+/* Travel Guide Hero */
+.travel-guide-hero {
+  position: relative;
+  height: 400px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: 80px;
+}
+
+.travel-guide-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/ocean.mp4');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
+
+.travel-guide-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.travel-guide-hero h1 {
+  position: relative;
+  z-index: 2;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.travel-guide-hero p {
+  position: relative;
+  z-index: 2;
+  font-size: 1.5rem;
+  opacity: 0.95;
+}
+
+/* Travel Guide Content */
+.travel-guide-content {
+  padding: 4rem 0;
+  min-height: 60vh;
+}
+
+.guide-section {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.guide-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+/* Tour Guide Cards */
+.tour-guide-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tour-guide-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tour-guide-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.tour-guide-header {
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.tour-guide-header:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
+}
+
+.tour-guide-header h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tour-guide-header p {
+  margin: 0.5rem 0 0 0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+.expand-icon {
+  font-size: 2rem;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.tour-destinations {
+  padding: 2rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+.destination-item {
+  border-bottom: 1px solid #eee;
+  padding: 1.5rem 0;
+}
+
+.destination-item:last-child {
+  border-bottom: none;
+}
+
+.destination-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.destination-header:hover {
+  background: #f8f9fa;
+}
+
+.destination-header h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.destination-header span {
+  color: #667eea;
+  font-size: 1rem;
+}
+
+.destination-details {
+  padding: 1rem 0 0 1rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+.destination-details p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.highlights-list li {
+  color: #667eea;
+  font-size: 0.95rem;
+  padding: 0.5rem;
+  background: #f0f4ff;
+  border-radius: 6px;
+}
+
+/* Inland Destinations */
+.inland-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.inland-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inland-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.inland-card-image {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.category-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #667eea;
+}
+
+.inland-card-content {
+  padding: 2rem;
+}
+
+.inland-card-content h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.distance {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.highlights-box {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
+
+.highlights-box h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.highlights-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.highlights-box li {
+  padding: 0.4rem 0;
+  color: #555;
+}
+
+.info-box {
+  background: #fff9e6;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.info-box p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Getting There Section */
+.getting-there-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.getting-there-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.getting-there-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.pros h4 {
+  color: #28a745;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.cons h4 {
+  color: #dc3545;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.pros ul, .cons ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pros li, .cons li {
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.tips-box {
+  background: #e3f2fd;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  border-left: 4px solid #2196f3;
+}
+
+/* Travel Tips Section */
+.tip-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.tip-card h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.tips-list li {
+  padding: 0.75rem 0;
+  color: #555;
+  font-size: 1.05rem;
+  border-bottom: 1px solid #eee;
+}
+
+.tips-list li:last-child {
+  border-bottom: none;
+}
+
+/* Packing Grid */
+.packing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.packing-category {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.packing-category h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.packing-category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.packing-category li {
+  padding: 0.4rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.dont-bring {
+  background: #ffebee;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  border-left: 4px solid #f44336;
+}
+
+.dont-bring h4 {
+  color: #d32f2f;
+  margin-bottom: 0.75rem;
+}
+
+/* Budget Grid */
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.budget-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.budget-card h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.daily-budget {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.budget-breakdown {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.budget-breakdown li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.95rem;
+}
+
+.budget-breakdown li:last-child {
+  border-bottom: none;
+}
+
+.saving-tips {
+  background: #fff9e6;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  border-left: 4px solid #ffc107;
+}
+
+.saving-tips h4 {
+  color: #f57c00;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.saving-tips ul {
+  list-style: none;
+  padding: 0;
+}
+
+.saving-tips li {
+  padding: 0.5rem 0;
+  color: #555;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .travel-guide-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .travel-guide-hero p {
+    font-size: 1.2rem;
+  }
+
+  .guide-section h2 {
+    font-size: 2rem;
+  }
+
+  .tour-guide-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .inland-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .getting-there-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pros-cons {
+    grid-template-columns: 1fr;
+  }
+
+  .budget-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .packing-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -84,26 +84,27 @@ ${formData.specialRequests || 'None'}
     <>
       {/* Navigation Header */}
       <nav className={`main-header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="header-logo-container">
-          <a href="/" className="header-logo">
-            <img src="/rectangle_logo.png" alt="Soycar Logo" className="custom-logo" />
-          </a>
-        </div>
-        
-        <ul className="header-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#services">Tours & Services</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </nav>
+  <div className="header-logo-container">
+    <a href="/" className="header-logo">
+      <img src="/rectangle_logo.png" alt="Soycar Logo" className="custom-logo" />
+    </a>
+  </div>
+  
+  <ul className="header-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#services">Tours & Services</a></li>
+    <li><a href="/travel-guide">Travel Guide</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
 
       {/* Booking Page Content */}
       <section className="booking-page">
         <div className="app-container">
           <button className="back-btn" onClick={() => navigate(-1)}>
-            ← Back to Tour
-          </button>
-
+  ← Back
+</button>
           <div className="booking-page-header">
             <h1>Complete Your Booking</h1>
             <p>You're one step away from an amazing experience!</p>

@@ -34,33 +34,42 @@ export default function TourDetailPage() {
     <>
       {/* Navigation Header */}
       <nav className={`main-header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="header-logo-container">
-          <a href="/" className="header-logo">
-            <img src="/rectangle_logo.png" alt="Soycar Logo" className="custom-logo" />
-          </a>
-        </div>
-        
-        <ul className="header-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#services">Tours & Services</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </nav>
+  <div className="header-logo-container">
+    <a href="/" className="header-logo">
+      <img src="/rectangle_logo.png" alt="Soycar Logo" className="custom-logo" />
+    </a>
+  </div>
+  
+  <ul className="header-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#services">Tours & Services</a></li>
+    <li><a href="/travel-guide">Travel Guide</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
 
       {/* Tour Hero Section */}
       <section className="tour-detail-hero" style={{ backgroundImage: `url(${tour.image})` }}>
         <div className="tour-detail-overlay"></div>
         <div className="app-container tour-detail-hero-content">
           <button className="back-btn" onClick={() => navigate(-1)}>
-            ← Back
-          </button>
+  ← Back
+</button>
           <h1 className="tour-detail-title">{tour.title}</h1>
           {tour.subtitle && <p className="tour-detail-subtitle">{tour.subtitle}</p>}
           {tour.duration && <p className="tour-detail-duration">⏱ {tour.duration}</p>}
           <div className="tour-detail-price-box">
             <span className="tour-detail-price-label">Starting from</span>
             <span className="tour-detail-price">₱{tour.price.toLocaleString()}</span>
-            <span className="tour-detail-price-person">/person</span>
+          <span className="tour-detail-price-person">/
+  {tour.id === 'airport-transfer' || tour.id === 'whole-day-inland-tour' ? 'vehicle' :
+   tour.category === 'inland-tour' ? 'vehicle' :
+   tour.category === 'rent-a-car' || tour.id === 'rent-a-car-popular' ? 'day' :
+   tour.id === 'private-speedboat' || tour.id === 'private-normal-boat' ? 'boat' :
+   'person'}
+</span>
+
           </div>
         </div>
       </section>
@@ -155,7 +164,14 @@ export default function TourDetailPage() {
                 <div className="booking-card">
                   <div className="booking-card-price">
                     <span className="booking-price">₱{tour.price.toLocaleString()}</span>
-                    <span className="booking-price-label">/person</span>
+                    <span className="booking-price-label">/
+  {tour.id === 'airport-transfer' || tour.id === 'whole-day-inland-tour' ? 'vehicle' :
+   tour.category === 'inland-tour' ? 'vehicle' :
+   tour.category === 'rent-a-car' || tour.id === 'rent-a-car-popular' ? 'day' :
+   tour.id === 'private-speedboat' || tour.id === 'private-normal-boat' ? 'boat' :
+   'person'}
+</span>
+
                   </div>
                   
                   {tour.duration && (

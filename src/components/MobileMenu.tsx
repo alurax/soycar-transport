@@ -64,6 +64,7 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
               Tours & Services
             </a>
           </li>
+          <li><a href="/travel-guide">Travel Guide</a></li>
           <li>
             <a href="#contact" onClick={handleLinkClick}>
               <span className="menu-icon">📞</span>
