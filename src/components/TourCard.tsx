@@ -19,10 +19,8 @@ export default function TourCard({ tour }: TourCardProps) {
 
   const handleClick = () => {
     if (tour.isRedirect && tour.redirectTo) {
-      // Redirect to specific URL (e.g., filter page)
       navigate(tour.redirectTo);
     } else {
-      // Normal navigation to detail page
       navigate(`/tour/${tour.id}`);
     }
   };

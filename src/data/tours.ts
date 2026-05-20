@@ -20,9 +20,8 @@ export interface Tour {
   };
 }
 
-
 export const tours: Tour[] = [
-  // MOST POPULAR
+  // Most Popular Offers
   {
     id: 'airport-transfer',
     category: 'most-popular',
@@ -46,7 +45,7 @@ export const tours: Tour[] = [
     duration: '6-8 HOURS',
     price: 7999,
     image: '/privatetours.jpg',
-    description: 'Explore El Nido\'s hidden gems on land. Visit waterfalls, lagoons, beaches, and viewpoints with our expert guides.',
+    description: "Explore El Nido's hidden gems on land. Visit waterfalls, lagoons, beaches, and viewpoints with our expert guides.",
     includes: [
       'Private van with driver',
       'Professional tour guide',
@@ -73,7 +72,7 @@ export const tours: Tour[] = [
     price: 1499,
     image: '/carrental.jpg',
     isRedirect: true, 
-  redirectTo: '/?category=rent-a-car', 
+    redirectTo: '/?category=rent-a-car', 
     description: 'Self-drive car rental. Explore at your own pace with our well-maintained fleet.',
     includes: [
       'Full tank of gas',
@@ -91,7 +90,7 @@ export const tours: Tour[] = [
     price: 6500,
     image: '/fishing.jpg',
     isRedirect: true, 
-  redirectTo: '/?category=adventure',
+    redirectTo: '/?category=adventure',
     description: 'Experience world-class fishing in the pristine waters of Bacuit Bay. All equipment provided.',
     includes: [
       'Fishing boat with captain',
@@ -103,33 +102,33 @@ export const tours: Tour[] = [
     ]
   },
 
-  // INLAND TOUR
+  // Inland Excursions
   {
-  id: 'whole-day-inland-tour-inland',
-  category: 'inland-tour',
-  title: 'WHOLE DAY INLAND TOUR',
-  duration: '6-8 HOURS',
-  price: 7999,
-  image: '/privatetours.jpg',
-  description: 'Explore El Nido\'s hidden gems on land. Visit waterfalls, lagoons, beaches, and viewpoints with our expert guides.',
-  includes: [
-    'Private van with driver',
-    'Professional tour guide',
-    'Entrance fees',
-    'Lunch included',
-    'Bottled water',
-    'Insurance'
-  ],
-  itinerary: [
-    { time: '8:00 AM', activity: 'Hotel pickup' },
-    { time: '9:00 AM', activity: 'Nagkalit-kalit Waterfalls' },
-    { time: '11:00 AM', activity: 'Nacpan Beach' },
-    { time: '1:00 PM', activity: 'Lunch at local restaurant' },
-    { time: '2:30 PM', activity: 'Las Cabanas Beach' },
-    { time: '4:00 PM', activity: 'Sunset viewpoint' },
-    { time: '5:30 PM', activity: 'Return to hotel' }
-  ]
-},
+    id: 'whole-day-inland-tour-inland',
+    category: 'inland-tour',
+    title: 'WHOLE DAY INLAND TOUR',
+    duration: '6-8 HOURS',
+    price: 7999,
+    image: '/privatetours.jpg',
+    description: "Explore El Nido's hidden gems on land. Visit waterfalls, lagoons, beaches, and viewpoints with our expert guides.",
+    includes: [
+      'Private van with driver',
+      'Professional tour guide',
+      'Entrance fees',
+      'Lunch included',
+      'Bottled water',
+      'Insurance'
+    ],
+    itinerary: [
+      { time: '8:00 AM', activity: 'Hotel pickup' },
+      { time: '9:00 AM', activity: 'Nagkalit-kalit Waterfalls' },
+      { time: '11:00 AM', activity: 'Nacpan Beach' },
+      { time: '1:00 PM', activity: 'Lunch at local restaurant' },
+      { time: '2:30 PM', activity: 'Las Cabanas Beach' },
+      { time: '4:00 PM', activity: 'Sunset viewpoint' },
+      { time: '5:30 PM', activity: 'Return to hotel' }
+    ]
+  },
   {
     id: 'half-day-inland-tour',
     category: 'inland-tour',
@@ -162,8 +161,7 @@ export const tours: Tour[] = [
     ]
   },
 
-
-  // RENT A CAR
+  // Vehicle Fleet Rentals
   {
     id: 'mirage-sedan',
     category: 'rent-a-car',
@@ -189,7 +187,7 @@ export const tours: Tour[] = [
     duration: '24 HOURS',
     price: 1299,
     image: '/Wigo.jpg',
-    description: 'Compact and easy to drive. Great for navigating El Nido\'s roads.',
+    description: "Compact and easy to drive. Great for navigating El Nido's roads.",
     carDetails: {
       model: 'Wigo',
       year: '2022',
@@ -250,7 +248,7 @@ export const tours: Tour[] = [
     }
   },
 
-  // ADVENTURE
+  // Outdoor Adventures
   {
     id: 'shore-casting',
     category: 'adventure',
@@ -293,7 +291,7 @@ export const tours: Tour[] = [
     duration: '4-6 HOURS',
     price: 3500,
     image: '/moto.jpg',
-    description: 'Off-road motorcycle adventure through El Nido\'s backcountry.',
+    description: "Off-road motorcycle adventure through El Nido's backcountry.",
     includes: [
       'Dirt bike rental',
       'Safety gear (helmet, gloves)',
@@ -303,7 +301,7 @@ export const tours: Tour[] = [
     ]
   },
 
-  // OTHER OFFERS
+  // Additional Special Offers
   {
     id: 'private-speedboat',
     category: 'other-offers',

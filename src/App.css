@@ -1,6 +1,5 @@
 /* ========================================
-   YOHAK-INSPIRED ENHANCED STYLES
-   Option B: Hybrid Luxury Design
+   SOYCAR TRANSPORT - PREMIUM DESIGN SYSTEM
    ======================================== */
 
 /* 1. Overall Page Setup */
@@ -16,8 +15,9 @@ h1, h2, h3 {
   font-weight: 800;
 }
 
-/* --- ADVENTURE HEADER --- */
-/* Desktop Header - Only show on larger screens */
+/* ========================================
+   MAIN NAVIGATION HEADER
+   ======================================== */
 .main-header {
   position: fixed;
   top: 0;
@@ -40,7 +40,6 @@ h1, h2, h3 {
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Hide on mobile - will be replaced by burger menu */
 @media (max-width: 992px) {
   .main-header {
     display: none !important;
@@ -90,7 +89,9 @@ h1, h2, h3 {
   color: #a3e635;
 }
 
-/* 2. Hero Section */
+/* ========================================
+   HERO SECTION
+   ======================================== */
 .video-overview {
   position: relative;
   min-height: 100vh;
@@ -124,7 +125,7 @@ h1, h2, h3 {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Oswald', sans-serif;
-  color: rgba(255, 255, 255, 0.4); /* INCREASED from 0.25 to 0.4 */
+  color: rgba(255, 255, 255, 0.4);
   font-weight: 700;
   white-space: nowrap;
   z-index: 3;
@@ -134,13 +135,13 @@ h1, h2, h3 {
   flex-direction: column;
   align-items: center;
   line-height: 0.85;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3); /* Added shadow for depth */
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .bg-text-top {
   font-size: 4vw;
   letter-spacing: 12px;
-  opacity: 1; /* INCREASED from 0.9 to 1 */
+  opacity: 1;
   margin-left: 12px;
 }
 
@@ -215,7 +216,9 @@ h1, h2, h3 {
   color: #aed5e6;
 }
 
-/* --- SECTION HEADERS --- */
+/* ========================================
+   SECTION HEADERS
+   ======================================== */
 .section-spacing {
   padding-top: 80px;
   padding-bottom: 40px;
@@ -243,9 +246,8 @@ h1, h2, h3 {
 }
 
 /* ========================================
-   🔥 ENHANCED SERVICE CARDS (YOHAK-INSPIRED)
+   MAIN SERVICE CARDS
    ======================================== */
-
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -350,7 +352,9 @@ h1, h2, h3 {
   box-shadow: 0 6px 20px rgba(174, 213, 230, 0.4);
 }
 
-/* --- FOOTER --- */
+/* ========================================
+   GLOBAL FOOTER
+   ======================================== */
 footer {
   margin-top: 60px;
   padding-top: 40px;
@@ -397,17 +401,15 @@ footer {
   color: #888; 
 }
 
-/* --- SERVICES SECTION BACKGROUND --- */
 #services {
-  background-color: #30f4c300;
+  background-color: transparent;
   padding: 80px 5%; 
   border-radius: 210px;
 }
 
 /* ========================================
-   🔥 TOUR FILTER TABS
+   TOUR FILTER TABS
    ======================================== */
-
 .tour-filter-section {
   padding: 40px 0 20px 0;
   background: transparent;
@@ -446,9 +448,8 @@ footer {
 }
 
 /* ========================================
-   🔥 HORIZONTAL TOUR CARDS
+   HORIZONTAL TOUR CARDS
    ======================================== */
-
 .tour-cards-section {
   padding: 40px 0 80px 0;
   background: transparent;
@@ -555,9 +556,8 @@ footer {
 }
 
 /* ========================================
-   🔥 TOUR DETAIL PAGE
+   TOUR DETAIL PAGE
    ======================================== */
-
 .tour-detail-hero {
   position: relative;
   height: 60vh;
@@ -565,8 +565,10 @@ footer {
   background-position: center;
   display: flex;
   align-items: flex-end;
+  margin-top: 0;
+  padding-top: 80px;
   padding-bottom: 60px;
-  margin-top: 80px;
+  overflow: hidden;
 }
 
 .tour-detail-overlay {
@@ -655,9 +657,8 @@ footer {
 }
 
 /* ========================================
-   🔥 TOUR DETAIL CONTENT
+   TOUR DETAIL CONTENT
    ======================================== */
-
 .tour-detail-content {
   padding: 60px 0;
 }
@@ -787,9 +788,8 @@ footer {
 }
 
 /* ========================================
-   🔥 BOOKING SIDEBAR
+   BOOKING SIDEBAR
    ======================================== */
-
 .tour-detail-sidebar {
   position: relative;
 }
@@ -932,9 +932,8 @@ footer {
 }
 
 /* ========================================
-   🔥 BOOKING PAGE
+   BOOKING PAGE
    ======================================== */
-
 .booking-page {
   padding: 120px 0 60px 0;
   min-height: 100vh;
@@ -963,9 +962,8 @@ footer {
 }
 
 /* ========================================
-   🔥 BOOKING FORM
+   BOOKING FORM
    ======================================== */
-
 .booking-form-container {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
@@ -1074,10 +1072,10 @@ footer {
   color: #aed5e6;
   margin: 0;
 }
-/* ========================================
-   🔥 BOOKING SUMMARY
-   ======================================== */
 
+/* ========================================
+   BOOKING SUMMARY
+   ======================================== */
 .booking-summary-container {
   position: relative;
 }
@@ -1208,9 +1206,8 @@ footer {
 }
 
 /* ========================================
-   🔥 CONTACT FLOAT BUTTON - EXPANDS UPWARD
+   CONTACT FLOAT BUTTON
    ======================================== */
-
 .contact-float-container {
   position: fixed;
   bottom: 30px;
@@ -1322,9 +1319,8 @@ footer {
 }
 
 /* ========================================
-   📸 INSTAGRAM GALLERY SECTION
+   INSTAGRAM GALLERY SECTION
    ======================================== */
-
 .instagram-gallery-section {
   padding: 80px 0 60px 0;
   background: rgba(255, 255, 255, 0.02);
@@ -1426,9 +1422,8 @@ footer {
 }
 
 /* ========================================
-   🍔 MOBILE HEADER - CLEAN VERSION
+   MOBILE HEADER
    ======================================== */
-
 .mobile-header {
   display: none;
   position: fixed;
@@ -1447,7 +1442,6 @@ footer {
   box-shadow: none;
 }
 
-/* Blurred when scrolled */
 .mobile-header.scrolled {
   background: rgba(26, 66, 90, 0.7);
   backdrop-filter: blur(15px);
@@ -1628,9 +1622,8 @@ footer {
 }
 
 /* ========================================
-   📱 RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS
    ======================================== */
-
 @media (max-width: 992px) {
   .main-header {
     display: none !important;
@@ -1658,9 +1651,8 @@ footer {
 }
 
 /* ========================================
-   🖥️ WIDE SCREEN OPTIMIZATION
+   WIDE SCREEN OPTIMIZATION
    ======================================== */
-
 @media (min-width: 1400px) {
   .app-container {
     max-width: 1400px;
@@ -1694,28 +1686,18 @@ footer {
 /* ============================================
    TRAVEL GUIDE PAGE STYLES
    ============================================ */
-
-/* Travel Guide Hero */
 .travel-guide-hero {
   position: relative;
   height: 400px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #0b1db9 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
-  margin-top: 80px;
-}
-
-.travel-guide-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('/ocean.mp4');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.3;
+  margin-top: 0;
+  padding-top: 80px;
+  overflow: hidden;
 }
 
 .travel-guide-hero .hero-overlay {
@@ -1740,7 +1722,6 @@ footer {
   opacity: 0.95;
 }
 
-/* Travel Guide Content */
 .travel-guide-content {
   padding: 4rem 0;
   min-height: 60vh;
@@ -1763,7 +1744,6 @@ footer {
   margin-bottom: 3rem;
 }
 
-/* Tour Guide Cards */
 .tour-guide-grid {
   display: grid;
   gap: 2rem;
@@ -1883,7 +1863,6 @@ footer {
   border-radius: 6px;
 }
 
-/* Inland Destinations */
 .inland-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1978,7 +1957,6 @@ footer {
   color: #555;
 }
 
-/* Getting There Section */
 .getting-there-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -2038,7 +2016,6 @@ footer {
   border-left: 4px solid #2196f3;
 }
 
-/* Travel Tips Section */
 .tip-card {
   background: white;
   padding: 2.5rem;
@@ -2071,7 +2048,6 @@ footer {
   border-bottom: none;
 }
 
-/* Packing Grid */
 .packing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -2116,7 +2092,6 @@ footer {
   margin-bottom: 0.75rem;
 }
 
-/* Budget Grid */
 .budget-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2186,62 +2161,26 @@ footer {
   color: #555;
 }
 
-/* Animations */
+/* ========================================
+   ANIMATIONS
+   ======================================== */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive Design */
+/* ========================================
+   RESPONSIVE DESIGN (PAGES)
+   ======================================== */
 @media (max-width: 768px) {
-  .travel-guide-hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .travel-guide-hero p {
-    font-size: 1.2rem;
-  }
-
-  .guide-section h2 {
-    font-size: 2rem;
-  }
-
-  .tour-guide-header h3 {
-    font-size: 1.5rem;
-  }
-
-  .inland-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .getting-there-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .pros-cons {
-    grid-template-columns: 1fr;
-  }
-
-  .budget-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .packing-grid {
-    grid-template-columns: 1fr;
-  }
+  .travel-guide-hero h1 { font-size: 2.5rem; }
+  .travel-guide-hero p { font-size: 1.2rem; }
+  .guide-section h2 { font-size: 2rem; }
+  .tour-guide-header h3 { font-size: 1.5rem; }
+  .inland-grid, .getting-there-grid, .pros-cons, .budget-grid, .packing-grid { grid-template-columns: 1fr; }
 }

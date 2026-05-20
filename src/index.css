@@ -4,7 +4,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #1a425a; /* A deep ocean blue to match the new vibe */
+  background-color: #1a425a; /* Primary theme background */
   font-family: 'Montserrat', sans-serif;
   color: #ffffff; 
   -webkit-font-smoothing: antialiased;

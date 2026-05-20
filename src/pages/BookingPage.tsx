@@ -1,11 +1,13 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { tours } from '../data/tours';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import ContactFloat from '../components/ContactFloat';
 
 export default function BookingPage() {
   const { tourId } = useParams();
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -18,19 +20,11 @@ export default function BookingPage() {
 
   const tour = tours.find(t => t.id === tourId);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   if (!tour) {
     return (
-      <div className="error-page">
+      <div className="error-page" style={{ textAlign: 'center', padding: '100px 20px', color: '#ffffff' }}>
         <h1>Tour Not Found</h1>
-        <button onClick={() => navigate('/')}>Back to Home</button>
+        <button className="back-btn" onClick={() => navigate('/')}>Back to Home</button>
       </div>
     );
   }
@@ -42,14 +36,13 @@ export default function BookingPage() {
     });
   };
 
+  const totalPrice = tour.price * formData.guests;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Calculate total price
-    const totalPrice = tour.price * formData.guests;
-
-    // Create WhatsApp message
+    // Formatted structural WhatsApp text notification layout
     const message = `
 🎫 *NEW BOOKING REQUEST*
 
@@ -69,7 +62,6 @@ ${formData.specialRequests || 'None'}
 
     const whatsappUrl = `https://wa.me/639613464499?text=${encodeURIComponent(message)}`;
     
-    // Simulate processing
     setTimeout(() => {
       window.open(whatsappUrl, '_blank');
       setIsSubmitting(false);
@@ -78,33 +70,17 @@ ${formData.specialRequests || 'None'}
     }, 1000);
   };
 
-  const totalPrice = tour.price * formData.guests;
-
   return (
     <>
-      {/* Navigation Header */}
-      <nav className={`main-header ${isScrolled ? 'scrolled' : ''}`}>
-  <div className="header-logo-container">
-    <a href="/" className="header-logo">
-      <img src="/rectangle_logo.png" alt="Soycar Logo" className="custom-logo" />
-    </a>
-  </div>
-  
-  <ul className="header-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/#services">Tours & Services</a></li>
-    <li><a href="/travel-guide">Travel Guide</a></li>
-    <li><a href="/#contact">Contact</a></li>
-  </ul>
-</nav>
+      <Header />
 
-
-      {/* Booking Page Content */}
+      {/* Booking Form Layout Panel */}
       <section className="booking-page">
         <div className="app-container">
           <button className="back-btn" onClick={() => navigate(-1)}>
-  ← Back
-</button>
+            ← Back
+          </button>
+          
           <div className="booking-page-header">
             <h1>Complete Your Booking</h1>
             <p>You're one step away from an amazing experience!</p>
@@ -226,7 +202,7 @@ ${formData.specialRequests || 'None'}
               </form>
             </div>
 
-            {/* Right Column - Booking Summary */}
+            {/* Right Column - Booking Summary Card */}
             <div className="booking-summary-container">
               <div className="booking-summary-sticky">
                 <div className="booking-summary">
@@ -285,27 +261,8 @@ ${formData.specialRequests || 'None'}
         </div>
       </section>
 
-      {/* Footer */}
-      <div id="contact" className="app-container">
-        <footer>
-          <div className="footer-content">
-            <div className="footer-col">
-              <h3>Soycar Transport</h3>
-              <p>Your premium gateway to the ultimate Palawan experience.</p>
-            </div>
-            <div className="footer-col">
-              <h3>Contact Us</h3>
-              <p>El Nido, Palawan, Philippines</p>
-              <p><a href="mailto:soycartransportcarrrentals@gmail.com">soycartransportcarrrentals@gmail.com</a></p>
-              <p>+63 927 224 4732</p>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; {new Date().getFullYear()} Soycar Transport and Services. All rights reserved.</p>
-            <p>Powered by Raxx</p>
-          </div>
-        </footer>
-      </div>
+      <Footer />
+      <ContactFloat />
     </>
   );
 }

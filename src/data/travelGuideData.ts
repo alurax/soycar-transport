@@ -20,7 +20,7 @@ export const islandTours: TourGuideSection[] = [
     destinations: [
       {
         name: 'Small Lagoon',
-        description: 'Paddle through crystal-clear emerald waters surrounded by towering limestone cliffs. The Small Lagoon is a kayaker\'s paradise with hidden passages and stunning rock formations.',
+        description: "Paddle through crystal-clear emerald waters surrounded by towering limestone cliffs. The Small Lagoon is a kayaker's paradise with hidden passages and stunning rock formations.",
         image: '/tours/small-lagoon.jpg',
         highlights: ['Kayaking through limestone cliffs', 'Crystal-clear emerald waters', 'Hidden passages']
       },
@@ -109,7 +109,7 @@ export const inlandDestinations = [
     description: 'A hidden gem tucked in the jungle, Kuyawyaw Falls offers a more intimate waterfall experience. The trek is moderate and the reward is a pristine natural pool.',
     image: '/inland/kuyawyaw.jpg',
     distance: '12km from El Nido town',
-    duration: '30-minute trek',
+    duration: '30-minute drive',
     highlights: ['Secluded waterfall', 'Natural pool', 'Moderate hiking', 'Less crowded'],
     bestTime: 'Year-round, best Jun-Nov',
     tips: 'Easier trek than Nagkalit-kalit. Good for families.'

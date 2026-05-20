@@ -1,45 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { islandTours, inlandDestinations, travelTips } from '../data/travelGuideData';
 import ContactFloat from '../components/ContactFloat';
-import MobileMenu from '../components/MobileMenu';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 type TabType = 'island-tours' | 'inland' | 'tips' | 'getting-there';
 
 export default function TravelGuidePage() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState<TabType>('island-tours');
   const [expandedTour, setExpandedTour] = useState<string | null>(null);
   const [expandedDestination, setExpandedDestination] = useState<string | null>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <>
-      {/* Navigation Header */}
-      <nav className={`main-header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="header-logo-container">
-          <a href="/" className="header-logo">
-            <img src="/rectangle_logo.png" alt="Soycar Logo" className="custom-logo" />
-          </a>
-        </div>
-        
-        <ul className="header-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#services">Tours & Services</a></li>
-          <li><a href="/travel-guide" className="active">Travel Guide</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <MobileMenu isScrolled={isScrolled} />
+      <Header />
 
       {/* Hero Section */}
       <section className="travel-guide-hero">
@@ -134,7 +108,7 @@ export default function TravelGuidePage() {
                         <a 
                           href={`/booking/${tour.id}`}
                           className="primary-pill-btn"
-                          style={{ marginTop: '1rem' }}
+                          style={{ marginTop: '1rem', display: 'inline-block' }}
                         >
                           Book {tour.title}
                         </a>
@@ -291,29 +265,8 @@ export default function TravelGuidePage() {
           )}
         </div>
       </section>
-
-      {/* Footer */}
-      <div id="contact" className="app-container">
-        <footer>
-          <div className="footer-content">
-            <div className="footer-col">
-              <h3>Soycar Transport</h3>
-              <p>Your premium gateway to the ultimate Palawan experience.</p>
-            </div>
-            <div className="footer-col">
-              <h3>Contact Us</h3>
-              <p>El Nido, Palawan, Philippines</p>
-              <p><a href="mailto:soycartransportcarrrentals@gmail.com">soycartransportcarrrentals@gmail.com</a></p>
-              <p>+63 927 224 4732</p>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; {new Date().getFullYear()} Soycar Transport and Services. All rights reserved.</p>
-            <p>Powered by Raxx</p>
-          </div>
-        </footer>
-      </div>
-
+      
+      <Footer />
       <ContactFloat />
     </>
   );

@@ -20,8 +20,7 @@ export default function FilterTabs({ activeCategory, onCategoryChange }: FilterT
           className={`filter-tab ${activeCategory === cat.id ? 'active' : ''}`}
           onClick={() => onCategoryChange(cat.id)}
         >
-          {activeCategory === cat.id && '✓ '}
-          {cat.label}
+          {activeCategory === cat.id ? `✓ ${cat.label}` : cat.label}
         </button>
       ))}
     </div>

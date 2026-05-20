@@ -1,27 +1,20 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { tours } from '../data/tours';
-import { useState, useEffect } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import ContactFloat from '../components/ContactFloat';
 
 export default function TourDetailPage() {
   const { tourId } = useParams();
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
 
   const tour = tours.find(t => t.id === tourId);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   if (!tour) {
     return (
-      <div className="error-page">
+      <div className="error-page" style={{ textAlign: 'center', padding: '100px 20px', color: '#ffffff' }}>
         <h1>Tour Not Found</h1>
-        <button onClick={() => navigate('/')}>Back to Home</button>
+        <button className="back-btn" onClick={() => navigate('/')}>Back to Home</button>
       </div>
     );
   }
@@ -30,46 +23,32 @@ export default function TourDetailPage() {
     navigate(`/booking/${tour.id}`);
   };
 
+  // Centralized price unit determination
+  const priceUnit = 
+    tour.id === 'airport-transfer' || tour.id === 'whole-day-inland-tour' ? 'vehicle' :
+    tour.category === 'inland-tour' ? 'vehicle' :
+    tour.category === 'rent-a-car' || tour.id === 'rent-a-car-popular' ? 'day' :
+    tour.id === 'private-speedboat' || tour.id === 'private-normal-boat' ? 'boat' :
+    'person';
+
   return (
     <>
-      {/* Navigation Header */}
-      <nav className={`main-header ${isScrolled ? 'scrolled' : ''}`}>
-  <div className="header-logo-container">
-    <a href="/" className="header-logo">
-      <img src="/rectangle_logo.png" alt="Soycar Logo" className="custom-logo" />
-    </a>
-  </div>
-  
-  <ul className="header-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/#services">Tours & Services</a></li>
-    <li><a href="/travel-guide">Travel Guide</a></li>
-    <li><a href="/#contact">Contact</a></li>
-  </ul>
-</nav>
-
+      <Header />
 
       {/* Tour Hero Section */}
       <section className="tour-detail-hero" style={{ backgroundImage: `url(${tour.image})` }}>
         <div className="tour-detail-overlay"></div>
         <div className="app-container tour-detail-hero-content">
           <button className="back-btn" onClick={() => navigate(-1)}>
-  ← Back
-</button>
+            ← Back
+          </button>
           <h1 className="tour-detail-title">{tour.title}</h1>
           {tour.subtitle && <p className="tour-detail-subtitle">{tour.subtitle}</p>}
           {tour.duration && <p className="tour-detail-duration">⏱ {tour.duration}</p>}
           <div className="tour-detail-price-box">
             <span className="tour-detail-price-label">Starting from</span>
             <span className="tour-detail-price">₱{tour.price.toLocaleString()}</span>
-          <span className="tour-detail-price-person">/
-  {tour.id === 'airport-transfer' || tour.id === 'whole-day-inland-tour' ? 'vehicle' :
-   tour.category === 'inland-tour' ? 'vehicle' :
-   tour.category === 'rent-a-car' || tour.id === 'rent-a-car-popular' ? 'day' :
-   tour.id === 'private-speedboat' || tour.id === 'private-normal-boat' ? 'boat' :
-   'person'}
-</span>
-
+            <span className="tour-detail-price-person">/{priceUnit}</span>
           </div>
         </div>
       </section>
@@ -164,14 +143,7 @@ export default function TourDetailPage() {
                 <div className="booking-card">
                   <div className="booking-card-price">
                     <span className="booking-price">₱{tour.price.toLocaleString()}</span>
-                    <span className="booking-price-label">/
-  {tour.id === 'airport-transfer' || tour.id === 'whole-day-inland-tour' ? 'vehicle' :
-   tour.category === 'inland-tour' ? 'vehicle' :
-   tour.category === 'rent-a-car' || tour.id === 'rent-a-car-popular' ? 'day' :
-   tour.id === 'private-speedboat' || tour.id === 'private-normal-boat' ? 'boat' :
-   'person'}
-</span>
-
+                    <span className="booking-price-label">/{priceUnit}</span>
                   </div>
                   
                   {tour.duration && (
@@ -232,41 +204,8 @@ export default function TourDetailPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <div id="contact" className="app-container">
-        <footer>
-          <div className="footer-content">
-            <div className="footer-col">
-              <h3>Soycar Transport</h3>
-              <p>Your premium gateway to the ultimate Palawan experience.</p>
-            </div>
-            <div className="footer-col">
-              <h3>Contact Us</h3>
-              <p>El Nido, Palawan, Philippines</p>
-              <p><a href="mailto:soycartransportcarrrentals@gmail.com">soycartransportcarrrentals@gmail.com</a></p>
-              <p>+63 927 224 4732</p>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; {new Date().getFullYear()} Soycar Transport and Services. All rights reserved.</p>
-            <p>Powered by Raxx</p>
-          </div>
-        </footer>
-      </div>
-
-      {/* Floating WhatsApp Button */}
-      <a 
-        href="https://wa.me/639613464499" 
-        className="whatsapp-float" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        aria-label="Chat with us on WhatsApp"
-      >
-        <svg viewBox="0 0 32 32" className="whatsapp-icon" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16.05 32h-.05c-2.65-.01-5.26-.74-7.56-2.1L0 32l2.18-8.23C.68 21.46-.02 18.77 0 16 0 7.17 7.18 0 16 0c4.27 0 8.28 1.66 11.3 4.69C30.33 7.7 32 11.72 32 16c0 8.83-7.18 16-16 16-.02 0-.03 0-.05 0zm-7.66-4.51l.46.27C10.9 28.98 13.43 29.6 16 29.6c7.5 0 13.6-6.1 13.6-13.6 0-3.64-1.42-7.06-3.99-9.63C23.05 3.8 19.64 2.38 16 2.38c-7.5 0-13.6 6.1-13.6 13.6 0 2.76.76 5.4 2.18 7.64l.3.47-1.3 4.92 5.06-1.32h-.05z"/>
-          <path d="M23.63 20.21c-.42-.21-2.46-1.21-2.84-1.35-.38-.14-.66-.21-.94.21-.28.42-1.08 1.35-1.32 1.62-.24.28-.48.31-.9.1-2.11-1.03-3.79-2.02-5.25-4.54-.15-.26.02-.38.22-.59.18-.19.41-.49.61-.74.2-.24.27-.41.4-.69.14-.28.07-.53-.03-.74-.1-.21-.94-2.27-1.29-3.11-.34-.82-.68-.71-.94-.72l-.8-.01c-.28 0-.74.1-1.13.53-.38.42-1.47 1.44-1.47 3.51 0 2.07 1.51 4.07 1.72 4.35.21.28 2.96 4.52 7.17 6.34 1 .43 1.78.69 2.39.88.99.31 1.9.27 2.62.16.8-.13 2.46-1.01 2.8-1.98.34-.98.34-1.81.24-1.98-.1-.18-.38-.28-.8-.49z"/>
-        </svg>
-      </a>
+      <Footer />
+      <ContactFloat />
     </>
   );
 }

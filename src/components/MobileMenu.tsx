@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 interface MobileMenuProps {
   isScrolled: boolean;
@@ -36,9 +37,9 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
         </button>
 
         <div className="mobile-logo-container">
-          <a href="/" className="mobile-logo">
+          <Link to="/" className="mobile-logo" onClick={handleLinkClick}>
             <img src="/rectangle_logo.png" alt="Soycar Logo" className="mobile-logo-img" />
-          </a>
+          </Link>
         </div>
 
         <div className="mobile-header-spacer"></div>
@@ -53,21 +54,22 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
 
         <ul className="mobile-menu-links">
           <li>
-            <a href="/" onClick={handleLinkClick}>
-              <span className="menu-icon">🏠</span>
+            <Link to="/" onClick={handleLinkClick}>
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#services" onClick={handleLinkClick}>
-              <span className="menu-icon">🚗</span>
               Tours & Services
             </a>
           </li>
-          <li><a href="/travel-guide">Travel Guide</a></li>
+          <li>
+            <Link to="/travel-guide" onClick={handleLinkClick}>
+              Travel Guide
+            </Link>
+          </li>
           <li>
             <a href="#contact" onClick={handleLinkClick}>
-              <span className="menu-icon">📞</span>
               Contact
             </a>
           </li>
@@ -75,15 +77,15 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
 
         <div className="mobile-menu-footer">
           <p className="mobile-menu-contact">
-            📧 soycartransportcarrrentals@gmail.com<br/>
-            📱 +63 927 224 4732
+            Email: soycartransportcarrrentals@gmail.com<br/>
+            Phone: +63 927 224 4732
           </p>
           <div className="mobile-menu-socials">
-            <a href="https://www.facebook.com/soycartransportpalawan" target="_blank" rel="noopener noreferrer">
-              <span className="social-icon">👍</span>
+            <a href="https://www.facebook.com/soycartransportpalawan" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <span className="social-icon">Facebook</span>
             </a>
-            <a href="https://www.instagram.com/soycartransportpalawan/" target="_blank" rel="noopener noreferrer">
-              <span className="social-icon">📷</span>
+            <a href="https://www.instagram.com/soycartransportpalawan/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <span className="social-icon">Instagram</span>
             </a>
           </div>
         </div>
