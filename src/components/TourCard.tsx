@@ -11,6 +11,7 @@ interface TourCardProps {
     category: string;
     isRedirect?: boolean;
     redirectTo?: string;
+    priceUnit?: string;
   };
 }
 
@@ -25,12 +26,7 @@ export default function TourCard({ tour }: TourCardProps) {
     }
   };
 
-  const priceUnit = 
-    tour.id === 'airport-transfer' || tour.id === 'whole-day-inland-tour' ? 'vehicle' :
-    tour.category === 'inland-tour' ? 'vehicle' :
-    tour.category === 'rent-a-car' || tour.id === 'rent-a-car-popular' ? 'day' :
-    tour.id === 'private-speedboat' || tour.id === 'private-normal-boat' ? 'boat' :
-    'person';
+  const priceUnit = tour.priceUnit || 'person';
 
   return (
     <div className="service-card" onClick={handleClick} style={{ cursor: 'pointer' }}>

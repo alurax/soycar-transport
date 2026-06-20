@@ -12,81 +12,51 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
-  const handleLinkClick = () => {
-    setIsOpen(false);
-  };
+  const close = () => setIsOpen(false);
 
   return (
     <>
-      <nav className={`mobile-header ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className={`mobile-nav ${isScrolled ? 'mobile-nav--scrolled' : ''}`}>
         <button
-          className={`burger-btn ${isOpen ? 'open' : ''}`}
+          className={`mobile-nav__toggle ${isOpen ? 'mobile-nav__toggle--open' : ''}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          <span className="burger-line"></span>
-          <span className="burger-line"></span>
-          <span className="burger-line"></span>
+          <span className="mobile-nav__bar" />
+          <span className="mobile-nav__bar" />
+          <span className="mobile-nav__bar" />
         </button>
 
-        <div className="mobile-logo-container">
-          <Link to="/" className="mobile-logo" onClick={handleLinkClick}>
-            <img src="/rectangle_logo.png" alt="Soycar Logo" className="mobile-logo-img" />
-          </Link>
-        </div>
+        <Link to="/" className="mobile-nav__logo" onClick={close}>
+          <img src="/rectangle_logo.png" alt="Soycar Transport" />
+        </Link>
 
-        <div className="mobile-header-spacer"></div>
+        <div style={{ width: 44 }} />
       </nav>
 
-      <div className={`mobile-menu-overlay ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(false)}></div>
+      <div className={`mobile-drawer ${isOpen ? 'mobile-drawer--open' : ''}`}>
+        <div className="mobile-drawer__backdrop" onClick={close} />
+        <div className="mobile-drawer__panel">
+          <div className="mobile-drawer__links">
+            <Link to="/" className="mobile-drawer__link" onClick={close}>Home</Link>
+            <Link to="/services" className="mobile-drawer__link" onClick={close}>Services</Link>
+            <Link to="/about" className="mobile-drawer__link" onClick={close}>About</Link>
+            <Link to="/travel-guide" className="mobile-drawer__link" onClick={close}>Travel Guide</Link>
+            <Link to="/contact" className="mobile-drawer__link" onClick={close}>Contact</Link>
+          </div>
 
-      <div className={`mobile-menu-drawer ${isOpen ? 'open' : ''}`}>
-        <div className="mobile-menu-header">
-          <img src="/rectangle_logo.png" alt="Soycar Logo" className="mobile-menu-logo" />
-        </div>
-
-        <ul className="mobile-menu-links">
-          <li>
-            <Link to="/" onClick={handleLinkClick}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <a href="#services" onClick={handleLinkClick}>
-              Tours & Services
-            </a>
-          </li>
-          <li>
-            <Link to="/travel-guide" onClick={handleLinkClick}>
-              Travel Guide
-            </Link>
-          </li>
-          <li>
-            <a href="#contact" onClick={handleLinkClick}>
-              Contact
-            </a>
-          </li>
-        </ul>
-
-        <div className="mobile-menu-footer">
-          <p className="mobile-menu-contact">
-            Email: soycartransportcarrrentals@gmail.com<br/>
-            Phone: +63 927 224 4732
-          </p>
-          <div className="mobile-menu-socials">
-            <a href="https://www.facebook.com/soycartransportpalawan" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <span className="social-icon">Facebook</span>
-            </a>
-            <a href="https://www.instagram.com/soycartransportpalawan/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <span className="social-icon">Instagram</span>
-            </a>
+          <div className="mobile-drawer__footer">
+            <p className="mobile-drawer__contact">
+              soycartransportcarrrentals@gmail.com<br />
+              +63 927 224 4732
+            </p>
           </div>
         </div>
       </div>

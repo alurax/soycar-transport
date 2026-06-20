@@ -10,31 +10,53 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isActive = (path: string) => location.pathname === path;
+
   return (
     <>
-      <nav className={`main-header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="header-logo-container">
-          <Link to="/" className="header-logo">
-            <img src="/rectangle_logo.png" alt="Soycar Logo" className="custom-logo" />
-          </Link>
-        </div>
-        
-        <ul className="header-links">
-          <li><Link to="/">Home</Link></li>
-          <li><a href="/#services">Tours & Services</a></li>
-          <li>
-            <Link to="/travel-guide" className={location.pathname === '/travel-guide' ? 'active' : ''}>
-              Travel Guide
-            </Link>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      {/* Desktop Navigation */}
+      <header className={`site-header ${isScrolled ? 'site-header--scrolled' : ''}`}>
+        <Link to="/" className="site-header__logo">
+          <img src="/rectangle_logo.png" alt="Soycar Transport" />
+        </Link>
 
+        <nav className="site-header__nav">
+          <Link
+            to="/"
+            className={`site-header__link ${isActive('/') ? 'site-header__link--active' : ''}`}
+          >
+            Home
+          </Link>
+          <Link
+            to="/services"
+            className={`site-header__link ${isActive('/services') ? 'site-header__link--active' : ''}`}
+          >
+            Services
+          </Link>
+          <Link
+            to="/about"
+            className={`site-header__link ${isActive('/about') ? 'site-header__link--active' : ''}`}
+          >
+            About
+          </Link>
+          <Link
+            to="/travel-guide"
+            className={`site-header__link ${isActive('/travel-guide') ? 'site-header__link--active' : ''}`}
+          >
+            Guide
+          </Link>
+        </nav>
+
+        <Link to="/contact" className="site-header__cta">
+          Book Now
+        </Link>
+      </header>
+
+      {/* Mobile Navigation */}
       <MobileMenu isScrolled={isScrolled} />
     </>
   );

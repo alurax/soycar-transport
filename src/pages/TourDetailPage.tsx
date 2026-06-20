@@ -23,13 +23,7 @@ export default function TourDetailPage() {
     navigate(`/booking/${tour.id}`);
   };
 
-  // Centralized price unit determination
-  const priceUnit = 
-    tour.id === 'airport-transfer' || tour.id === 'whole-day-inland-tour' ? 'vehicle' :
-    tour.category === 'inland-tour' ? 'vehicle' :
-    tour.category === 'rent-a-car' || tour.id === 'rent-a-car-popular' ? 'day' :
-    tour.id === 'private-speedboat' || tour.id === 'private-normal-boat' ? 'boat' :
-    'person';
+  const priceUnit = tour.priceUnit || 'person';
 
   return (
     <>

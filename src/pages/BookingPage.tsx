@@ -62,12 +62,9 @@ ${formData.specialRequests || 'None'}
 
     const whatsappUrl = `https://wa.me/639613464499?text=${encodeURIComponent(message)}`;
     
-    setTimeout(() => {
-      window.open(whatsappUrl, '_blank');
-      setIsSubmitting(false);
-      alert('Booking request sent! We will contact you shortly via WhatsApp.');
-      navigate('/');
-    }, 1000);
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    setIsSubmitting(false);
+    navigate('/');
   };
 
   return (

@@ -18,6 +18,7 @@ export interface Tour {
     transmission: string;
     seats: number;
   };
+  priceUnit?: 'person' | 'vehicle' | 'day' | 'boat';
 }
 
 export const tours: Tour[] = [
@@ -28,6 +29,7 @@ export const tours: Tour[] = [
     title: 'AIRPORT TRANSFER',
     duration: '1 WAY',
     price: 1199,
+    priceUnit: 'vehicle',
     image: '/airport_transfer.jpg',
     description: 'Comfortable and reliable airport transfer service. Professional drivers, air-conditioned vehicles, and door-to-door service.',
     includes: [
@@ -44,6 +46,7 @@ export const tours: Tour[] = [
     title: 'WHOLE DAY INLAND TOUR',
     duration: '6-8 HOURS',
     price: 7999,
+    priceUnit: 'vehicle',
     image: '/privatetours.jpg',
     description: "Explore El Nido's hidden gems on land. Visit waterfalls, lagoons, beaches, and viewpoints with our expert guides.",
     includes: [
@@ -70,6 +73,7 @@ export const tours: Tour[] = [
     title: 'RENT A CAR',
     duration: '24 HOURS',
     price: 1499,
+    priceUnit: 'day',
     image: '/carrental.jpg',
     isRedirect: true, 
     redirectTo: '/?category=rent-a-car', 
@@ -88,6 +92,7 @@ export const tours: Tour[] = [
     title: 'EL NIDO FISHING ADVENTURE',
     duration: 'HALF DAY',
     price: 6500,
+    priceUnit: 'person',
     image: '/fishing.jpg',
     isRedirect: true, 
     redirectTo: '/?category=adventure',
@@ -109,6 +114,7 @@ export const tours: Tour[] = [
     title: 'WHOLE DAY INLAND TOUR',
     duration: '6-8 HOURS',
     price: 7999,
+    priceUnit: 'vehicle',
     image: '/privatetours.jpg',
     description: "Explore El Nido's hidden gems on land. Visit waterfalls, lagoons, beaches, and viewpoints with our expert guides.",
     includes: [
@@ -135,6 +141,7 @@ export const tours: Tour[] = [
     title: 'HALF DAY INLAND TOUR',
     duration: '4-5 HOURS',
     price: 4500,
+    priceUnit: 'vehicle',
     image: '/privatetours.jpg',
     description: 'Perfect for those short on time. Visit 2-3 top inland attractions.',
     includes: [
@@ -150,6 +157,7 @@ export const tours: Tour[] = [
     title: 'CUSTOM INLAND TOUR',
     duration: 'FLEXIBLE',
     price: 9999,
+    priceUnit: 'vehicle',
     image: '/privatetours.jpg',
     description: 'Design your own itinerary. Choose your destinations and activities.',
     includes: [
@@ -169,6 +177,7 @@ export const tours: Tour[] = [
     subtitle: 'Sedan',
     duration: '24 HOURS',
     price: 1499,
+    priceUnit: 'day',
     image: '/mirage.jpg',
     description: 'Fuel-efficient sedan perfect for couples or small families.',
     carDetails: {
@@ -186,6 +195,7 @@ export const tours: Tour[] = [
     subtitle: 'Compact',
     duration: '24 HOURS',
     price: 1299,
+    priceUnit: 'day',
     image: '/Wigo.jpg',
     description: "Compact and easy to drive. Great for navigating El Nido's roads.",
     carDetails: {
@@ -203,6 +213,7 @@ export const tours: Tour[] = [
     subtitle: 'SUV',
     duration: '24 HOURS',
     price: 2499,
+    priceUnit: 'day',
     image: '/adventure.jpg',
     description: 'Spacious SUV for groups and families. Perfect for rough roads.',
     carDetails: {
@@ -220,6 +231,7 @@ export const tours: Tour[] = [
     subtitle: 'MPV',
     duration: '24 HOURS',
     price: 2799,
+    priceUnit: 'day',
     image: '/xpander.jpg',
     description: 'Modern MPV with premium features. Comfortable for long drives.',
     carDetails: {
@@ -237,6 +249,7 @@ export const tours: Tour[] = [
     subtitle: 'SUV',
     duration: '24 HOURS',
     price: 2299,
+    priceUnit: 'day',
     image: '/carrental.jpg',
     description: 'Reliable SUV for island adventures. Great for beach trips.',
     carDetails: {
@@ -256,6 +269,7 @@ export const tours: Tour[] = [
     subtitle: 'El Nido Fishing',
     duration: 'HALF DAY',
     price: 2000,
+    priceUnit: 'person',
     image: '/fishing.jpg',
     description: 'Fish from the shore with premium gear. Perfect for beginners.',
     includes: [
@@ -273,6 +287,7 @@ export const tours: Tour[] = [
     subtitle: 'El Nido Fishing',
     duration: 'HALF DAY',
     price: 6500,
+    priceUnit: 'person',
     image: '/fishing.jpg',
     description: 'Deep sea fishing adventure. Target big game fish in Bacuit Bay.',
     includes: [
@@ -290,6 +305,7 @@ export const tours: Tour[] = [
     title: 'EL NIDO MOTOR TRAIL',
     duration: '4-6 HOURS',
     price: 3500,
+    priceUnit: 'person',
     image: '/moto.jpg',
     description: "Off-road motorcycle adventure through El Nido's backcountry.",
     includes: [
@@ -309,6 +325,7 @@ export const tours: Tour[] = [
     subtitle: 'Speedboat',
     duration: 'FULL DAY',
     price: 12000,
+    priceUnit: 'boat',
     image: '/kayak.JPG',
     description: 'Exclusive speedboat tour. Visit more islands in less time.',
     includes: [
@@ -327,6 +344,7 @@ export const tours: Tour[] = [
     subtitle: 'Normal Boat',
     duration: 'FULL DAY',
     price: 8000,
+    priceUnit: 'boat',
     image: '/kayak.JPG',
     description: 'Private traditional boat tour. Relaxed pace, more time at each stop.',
     includes: [
@@ -345,6 +363,7 @@ export const tours: Tour[] = [
     subtitle: 'Speedboat',
     duration: 'FULL DAY',
     price: 2500,
+    priceUnit: 'person',
     image: '/kayak.JPG',
     description: 'Join other travelers on a speedboat tour. Budget-friendly option.',
     includes: [
@@ -362,6 +381,7 @@ export const tours: Tour[] = [
     subtitle: 'Normal Boat',
     duration: 'FULL DAY',
     price: 1800,
+    priceUnit: 'person',
     image: '/kayak.JPG',
     description: 'Traditional boat tour with other guests. Most economical option.',
     includes: [

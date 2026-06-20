@@ -1,0 +1,115 @@
+/* ========================================
+   BOOKING WIDGET (Form Component)
+   ======================================== */
+.booking-widget {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%;
+}
+
+.booking-widget__header {
+  margin-bottom: var(--space-2xl);
+}
+
+.booking-widget__header h3 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-xs);
+  color: var(--accent-gold);
+}
+
+.booking-widget__header p {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.booking-widget__error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-xl);
+  font-size: var(--text-sm);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.booking-widget__form {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+/* Horizontal Layout for Desktop */
+.booking-widget--horizontal .booking-widget__form {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: end;
+}
+
+.booking-widget--horizontal .form-group--full {
+  grid-column: 1 / -1;
+}
+
+.booking-widget--horizontal .form-divider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: var(--space-lg) 0;
+}
+
+.booking-widget--horizontal .form-group--submit {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-md);
+}
+
+/* Stacked Layout for Mobile/Sidebar */
+.booking-widget--stacked .booking-widget__form {
+  grid-template-columns: 1fr;
+}
+
+.booking-widget--stacked .form-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: var(--space-lg) 0;
+}
+
+.booking-widget--stacked .form-group--submit {
+  margin-top: var(--space-md);
+}
+
+.booking-widget--stacked .btn {
+  width: 100%;
+}
+
+/* Success State */
+.booking-widget--success {
+  text-align: center;
+  padding: var(--space-4xl) var(--space-2xl);
+}
+
+.booking-widget__success-content h3 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-md);
+}
+
+.booking-widget__success-content p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.booking-widget__icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+  .booking-widget {
+    padding: var(--space-xl);
+  }
+  
+  .booking-widget--horizontal .booking-widget__form {
+    grid-template-columns: 1fr; /* Force stacked on mobile even if horizontal requested */
+  }
+}
